@@ -60,9 +60,11 @@ list_2.sort()
 
 list_3 = list(set_3)
 list_3.sort()
-
-for i in list_1:
-	print(i)
+print(len(list_1))
+print(len(list_2))
+print(len(list_3))
+# for i in list_3:
+# 	print(i)
 
 # titles = ["Code Geass: Lelouch of the Rebellion: Season 2: Episode 25", "Fate/stay night: Unlimited Blade Works: Part 2: Epilogue",
 # "JoJo's Bizarre Adventure: Stardust Crusaders: Dio's World, Part 3", "Fate/Apocrypha: Part 1: Apocrypha: The Great Holy Grail War"]
