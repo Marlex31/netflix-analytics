@@ -1,9 +1,7 @@
 
 import csv
 import re
-
-# formats the netflix csv file by removing extra colons from media name or episode title, criteria is more than 3 colons
-# also removes shows that have only one episode watched
+from collections import Counter
 
 
 file = 'netflix.csv'
@@ -17,21 +15,16 @@ def reader(file, index=0):
 		for line in f_read:
 			yield line[index]
 
-
 titles = []
+movies = []
 for line in reader(file):
-	titles.append(line)
-
+	if line.find(':') > 0:
+		titles.append(line)
+	else:
+		movies.append(line)
+		
 colon_pattern = re.compile(r":")
-# title_pattern = re.compile(r"^(([a-zA-Z0-9_'\/,]+\s?)*):")
 # episode_pattern = r":\s?([a-zA-Z0-9_'\/,]+\s?)* [a-zA-Z0-9_'\/,]+$"
-x=0
-
-# for title in titles:
-# 	matches = title_pattern.finditer(title)
-# 	for match in matches:
-# 		print(x, match.group(1))
-# 		x+=1
 
 set_1 = set()
 set_2 = set()
@@ -60,34 +53,56 @@ list_2.sort()
 
 list_3 = list(set_3)
 list_3.sort()
-print(len(list_1))
-print(len(list_2))
-print(len(list_3))
-# for i in list_3:
-# 	print(i)
 
-# titles = ["Code Geass: Lelouch of the Rebellion: Season 2: Episode 25", "Fate/stay night: Unlimited Blade Works: Part 2: Epilogue",
-# "JoJo's Bizarre Adventure: Stardust Crusaders: Dio's World, Part 3", "Fate/Apocrypha: Part 1: Apocrypha: The Great Holy Grail War"]
+for i in list_1:
+	print(i)
 
-# season_pattern = re.compile(r': ((Season|Part) \d):')
-# names=[]
 
-# for title in titles:
-# 	matches = season_pattern.finditer(title)
+season_pattern = re.compile(r': ((Season|Part) \d):')
+found = []
+names = []
 
-# 	for match in matches:
+for title in list_3:
+	matches = season_pattern.finditer(title)
 
-# 		if match.group(2) == 'Season' or match.group(2) == 'Part':
-# 			season = match.group(1)
-# 			name = title[0:match.span()[0]]
-# 			episode = title[match.span()[-1]:].strip()
+	for match in matches:
 
-# 			names.append(name)
+		if match.group(2) == 'Season' or match.group(2) == 'Part':
+			season = match.group(1)
+			name = title[0:match.span()[0]]
+			episode = title[match.span()[-1]:].strip()
+
+			found.append(title)
+			names.append(name)
 # 			print(name, season, episode, sep=' - ')
 
+
 # not_found = []
-# print()
-# for x, y in zip(names, titles):
-# 	if x not in y:
-# 		print(y)
-# 		not_found.append(y)
+# for x in list_3:
+# 	if x not in found:
+# 		print(x)
+
+
+# ep_watched = Counter(names)
+# copy_dict = ep_watched.copy()
+
+# for x, y in copy_dict.items():
+# 	if y < 3:
+# 		ep_watched.pop(x)
+# 	else:
+# 		print(x)
+
+# print(ep_watched)
+
+
+# glossary = {}
+
+# for title in iter(list_1):
+# 	smpl_title = title.split(':')[0]
+# 	x=0
+# 	for i in list_1:
+# 		if smpl_title in i:
+# 			x+=1
+# 	glossary.update({smpl_title:x})
+
+# print(glossary)

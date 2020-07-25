@@ -5,3 +5,14 @@ get number of mentions by title
 problem titles: Sword Art Online: Sword Art Online II: Mother's Rosario,
 			   Violet Evergarden: Special: Extra Episode: Episode 1
 			   Case Closed: Collection: Metropolitan Police Detective Love Story: Confessions
+			   The Seven Deadly Sins: Revival of The Commandments: A Bloodcurdling Confession
+
+
+title var not defined error on line 49 of scrape.py
+
+check for titles that are split between lists eg rick and morty
+
+
+12 secs for unogs
+8 secs for imdb
+20 per show
