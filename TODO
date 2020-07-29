@@ -1,18 +1,11 @@
-add threading
 
-get number of mentions by title
+check for titles that are split between lists eg rick and morty
+
+unit tests - at least for the scraper
 
 problem titles: Sword Art Online: Sword Art Online II: Mother's Rosario,
 			   Violet Evergarden: Special: Extra Episode: Episode 1
 			   Case Closed: Collection: Metropolitan Police Detective Love Story: Confessions
 			   The Seven Deadly Sins: Revival of The Commandments: A Bloodcurdling Confession
 
-
-title var not defined error on line 49 of scrape.py
-
-check for titles that are split between lists eg rick and morty
-
-
-12 secs for unogs
-8 secs for imdb
-20 per show
+list_2 shows that don't fit season_pattern: jojo stardust crusaders, SAO s2, sds

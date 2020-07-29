@@ -2,7 +2,10 @@
 import csv
 import re
 from collections import Counter
+import concurrent.futures
 
+from scrape import mediaSearch
+from itertools import repeat
 
 file = 'netflix.csv'
 
@@ -54,8 +57,8 @@ list_2.sort()
 list_3 = list(set_3)
 list_3.sort()
 
-for i in list_1:
-	print(i)
+# for i in list_1:
+# 	print(i)
 
 
 season_pattern = re.compile(r': ((Season|Part) \d):')
@@ -94,15 +97,64 @@ for title in list_3:
 
 # print(ep_watched)
 
+glossary_1 = {}
+glossary_2 = {}
 
-# glossary = {}
+for title in iter(list_1):
+	smpl_title = title.split(':')[0]
 
-# for title in iter(list_1):
-# 	smpl_title = title.split(':')[0]
-# 	x=0
-# 	for i in list_1:
-# 		if smpl_title in i:
-# 			x+=1
-# 	glossary.update({smpl_title:x})
+	x=0
+	for i in list_1:
+		if smpl_title+':' in i:
+			x+=1
 
-# print(glossary)
+	# add break rule for already existing titles
+	if x < 7:
+		if x > 1:
+			glossary_2.update({smpl_title:[x, title.split(':')[1]]})
+		else:
+			glossary_2.update({title:[x, '']})
+	
+	else:
+		glossary_1.update({smpl_title:x})
+
+
+def parser(data):
+	for i, j in data.items():
+		if type(j) is list and j[1] == '' or type(j) is int:
+			yield i
+		else:
+			yield f'{i}:{j[1]}'
+
+
+def ep_group(source_dict, target_list):
+	copy_list = target_list.copy()
+	for i in parser(source_dict):
+		for k in copy_list:
+			if i in k:
+				target_list.remove(k)
+				source_dict[i]+=1
+
+
+ep_group(glossary_1, list_2)
+# print(glossary_1)
+# print()
+# print(glossary_2)
+
+
+def main():
+	if __name__ == '__main__':
+
+
+		with concurrent.futures.ProcessPoolExecutor(max_workers=3) as executor: # thread pool exec if just imdb reqs
+			results = executor.map(mediaSearch, parser(glossary_2))
+
+			for result in results:
+				
+				print(result.media)
+				print(result.title)
+				print(result.media_type)
+				print(result.duration)
+				print()
+
+# main()
