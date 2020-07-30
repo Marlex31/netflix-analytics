@@ -21,7 +21,7 @@ class watchTime(object):
 
 
 
-show_1 = watchTime("2h 30min")
-show_2 =  watchTime("58min")
+# show_1 = watchTime("2h 30min")
+# show_2 =  watchTime("58min")
 
-print(show_1.total + show_2.total)
+# print(show_1.total*3)

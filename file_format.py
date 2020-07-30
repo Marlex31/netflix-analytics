@@ -3,20 +3,12 @@ import csv
 import re
 from collections import Counter
 import concurrent.futures
-
-from scrape import mediaSearch
 from itertools import repeat
 
+from scrape import mediaSearch
+from utillities import *
+
 file = 'netflix.csv'
-
-def reader(file, index=0): 
- 
-	with open(file, 'r', encoding="utf8") as f:
-		f_read = csv.reader(f)
-		next(f_read)
-
-		for line in f_read:
-			yield line[index]
 
 titles = []
 movies = []
@@ -100,7 +92,7 @@ for title in list_3:
 glossary_1 = {}
 glossary_2 = {}
 
-for title in iter(list_1):
+for title in list_1:
 	smpl_title = title.split(':')[0]
 
 	x=0
@@ -111,7 +103,10 @@ for title in iter(list_1):
 	# add break rule for already existing titles
 	if x < 7:
 		if x > 1:
-			glossary_2.update({smpl_title:[x, title.split(':')[1]]})
+			if smpl_title in glossary_2.keys():
+				glossary_2[smpl_title].append(title.split(':')[1])
+			else:
+				glossary_2.update({smpl_title:[x, title.split(':')[1]]})
 		else:
 			glossary_2.update({title:[x, '']})
 	
@@ -119,42 +114,50 @@ for title in iter(list_1):
 		glossary_1.update({smpl_title:x})
 
 
-def parser(data):
-	for i, j in data.items():
-		if type(j) is list and j[1] == '' or type(j) is int:
-			yield i
-		else:
-			yield f'{i}:{j[1]}'
-
-
-def ep_group(source_dict, target_list):
-	copy_list = target_list.copy()
-	for i in parser(source_dict):
-		for k in copy_list:
-			if i in k:
-				target_list.remove(k)
-				source_dict[i]+=1
-
-
 ep_group(glossary_1, list_2)
-# print(glossary_1)
-# print()
-# print(glossary_2)
 
+with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor: # thread pool exec if just imdb reqs
+	results = executor.map(mediaSearch, parser(glossary_1), repeat(True))
+
+	for r in results:
+		occurences = glossary_1[r.media]
+		glossary_1[r.media] = [occurences, r.duration] 
+
+# print(glossary_1)
+# print(glossary_2)
+# print()
 
 def main():
-	if __name__ == '__main__':
+	glossary_3 = {}
 
+	if __name__ == '__main__':
 
 		with concurrent.futures.ProcessPoolExecutor(max_workers=3) as executor: # thread pool exec if just imdb reqs
 			results = executor.map(mediaSearch, parser(glossary_2))
 
-			for result in results:
-				
-				print(result.media)
-				print(result.title)
-				print(result.media_type)
-				print(result.duration)
-				print()
+			for r in results:
+				if r.media_type != 'series':
+					glossary_3.update({r.title:[r.media_type, r.duration]})
+				else:
+					occurences = glossary_2[r.title][0] # possible need for exceptions
+					glossary_3.update({r.title:[r.media_type, r.duration, occurences]})
 
+		print(glossary_3)
 # main()
+
+
+glossary_4 = {'2001: A Space Odyssey': ['movie', '2h 29min'], 'Captain America: The Winter Soldier': ['movie', '2h 16min'], 'EVANGELION: DEATH (TRUE)²': ['movie', '1h 41min'], 'Flavors of Youth: International Version': ['movie', '1h 14min'], None: [None, None], 'The Golden Compass': ['movie', '1h 53min'], 'Jimmy Carr: Funny Business': ['movie', '1h 2min'], 'John Wick': ['movie', '1h 41min'], 'Journey 2: The Mysterious Island': ['movie', '1h 34min'], 'Kakegurui': ['series', '24min', 4], 'Pirates of the Caribbean: Dead Men Tell No Tales': ['movie', '2h 9min'], 'Sword Art Online the Movie: Ordinal Scale': ['movie', '1h 59min'], 'The Hangover: Part III': ['movie', '1h 40min'], 'The Lord of the Rings: The Fellowship of the Ring': ['movie', '2h 58min'], 'The Seven Deadly Sins the Movie: Prisoners of the Sky': ['movie', '1h 39min'], 'Transformers: Dark of the Moon': ['movie', '2h 34min'], 'Underworld: Rise of the Lycans': ['movie', '1h 32min'], 'Violet Evergarden: Eternity and the Auto Memory Doll': ['movie', '1h 30min']}
+glossary_4.pop(None)
+
+to_search = []
+for i, j in glossary_2.items():
+	if j[0] > 1:
+		for k in glossary_4.keys():
+			if k.startswith(i):
+				for item in j[1:-1]:
+					if glossary_4[k][0] == 'movie':
+						to_search.append(f'{i}:{item}')
+
+# for key in glossary_1.keys():
+# 	to_search.append(key)
+# print(to_search)

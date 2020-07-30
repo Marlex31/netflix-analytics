@@ -1,11 +1,4 @@
 
-check for titles that are split between lists eg rick and morty
+make utils file
 
-unit tests - at least for the scraper
-
-problem titles: Sword Art Online: Sword Art Online II: Mother's Rosario,
-			   Violet Evergarden: Special: Extra Episode: Episode 1
-			   Case Closed: Collection: Metropolitan Police Detective Love Story: Confessions
-			   The Seven Deadly Sins: Revival of The Commandments: A Bloodcurdling Confession
-
-list_2 shows that don't fit season_pattern: jojo stardust crusaders, SAO s2, sds
+add tests for searching only imdb

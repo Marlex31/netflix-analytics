@@ -16,7 +16,7 @@ class mediaSearch(object):
 
 		self.simple_media = media.split(':')[0] # had a space after colon
 		self.session = HTMLSession()
-		self.session.browser
+		# self.session.browser
 
 
 		if self.len_scrape == True:
@@ -44,6 +44,7 @@ class mediaSearch(object):
 		 		elif self.title not in self.media:
 		 			self.title = None
 		 			self.media_type = None
+		 			self.duration = None
 		 			break # remove from list
 
 		 		break
@@ -83,8 +84,7 @@ class mediaSearch(object):
 			self.duration = r.html.find("time", first=True).text
 
 
-# ex = mediaSearch('The Hangover: Part III')
-# print()
+# ex = mediaSearch('The Hangover: Part III', True)
 # print(ex.media)
 # print(ex.title)
 # print(ex.media_type)
