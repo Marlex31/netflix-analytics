@@ -1,4 +1,6 @@
 
-make utils file
+scraping unogs sometimes returns a lot of None results, reiterate over them
 
-add tests for searching only imdb
+add tests for searching only imdb, comparting unogs and imdb duration within thresh, test for john wick 2
+
+refactor edge case handling in scrape func

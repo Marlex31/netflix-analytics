@@ -2,3 +2,4 @@ test.py
 .google-cookie
 __pycache__/
 .pytest_cache/
+.vscode/
