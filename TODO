@@ -1,5 +1,5 @@
 
-scraping unogs sometimes returns a lot of None results, reiterate over them
+scraping unogs sometimes returns a lot of None results, reiterate over them, might depend on num of requests/workers
 
 add tests for searching only imdb, comparting unogs and imdb duration within thresh, test for john wick 2
 
