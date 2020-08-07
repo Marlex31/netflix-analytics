@@ -2,6 +2,7 @@
 import re
 import concurrent.futures
 from itertools import repeat
+from pprint import pprint
 
 from scrape import mediaSearch
 from utillities import *
@@ -46,35 +47,8 @@ list_2.sort()
 list_3 = list(set_3)
 list_3.sort()
 
-# list_3 handling
-season_pattern = re.compile(r': ((Season|Part) \d):')
-found = []
-names = []
 
-for title in list_3:
-    matches = season_pattern.finditer(title)
-
-    for match in matches:
-
-        if match.group(2) == 'Season' or match.group(2) == 'Part':
-            name = title[0:match.span()[0]]
-            # season = match.group(1)
-            # episode = title[match.span()[-1]:].strip()
-
-            found.append(title)
-            names.append(name)
-            # print(name, season, episode, sep=' - ')
-
-# print(ep_counter(names))
-
-not_found = []
-for i in list_3:
-    if i not in found:
-        not_found.append(i)
-# print(not_found)
-
-
-# list_1 handling 
+# list_1 handling
 glossary_1 = {}
 glossary_2 = {}
 
@@ -103,11 +77,12 @@ for title in list_1:
 ep_group(glossary_1, list_2)
 
 
-def main():
-    glossary_3 = {}
+if __name__ == '__main__':
+    try:
+        glossary_3 = json_reader()
 
-    if __name__ == '__main__':
-
+    except FileNotFoundError:
+        glossary_3 = {}
         with concurrent.futures.ProcessPoolExecutor(max_workers=2) as executor:
             results = executor.map(mediaSearch, parser(glossary_2))
 
@@ -119,46 +94,42 @@ def main():
                     occurences = glossary_2[r.title][0]  # possible need for exceptions
                     glossary_3.update({r.title: [r.media_type, r.duration, occurences]})
 
-        print(glossary_3)
+            try:
+                glossary_3.pop(None)
+            except KeyError:
+                pass
 
+            for i, j in glossary_3.items():
+                if None in j:
+                    ex = mediaSearch(i)
+                    glossary_3[i] = [ex.media_type, ex.duration]
 
-# main()
-
-# replaces glossary 3
-dummy_data = {'2001: A Space Odyssey': ['movie', '2h 29min'], 'Captain America: The Winter Soldier': ['movie', '2h 16min'], 'EVANGELION: DEATH (TRUE)²': ['movie', '1h 41min'], 'Flavors of Youth: International Version': ['movie', '1h 14min'], 'The Golden Compass': ['movie', '1h 53min'], 'Jimmy Carr: Funny Business': ['movie', '1h 2min'], 'John Wick: Chapter Two': ['movie', '2h2m21s'], 'Journey 2: The Mysterious Island': ['movie', '1h 34min'], 'Kakegurui': ['series', '24min', 4], 'Pirates of the Caribbean: Dead Men Tell No Tales': ['movie', '2h 9min'], 'Sword Art Online the Movie: Ordinal Scale': ['movie', '1h 59min'], 'The Hangover: Part III': ['movie', '1h 40min'], 'The Lord of the Rings: The Fellowship of the Ring': ['movie', '2h 58min'], 'The Seven Deadly Sins the Movie: Prisoners of the Sky': ['movie', '1h 39min'], 'Transformers: Dark of the Moon': ['movie', '2h 34min'], 'Underworld: Rise of the Lycans': ['movie', '1h 32min'], 'Violet Evergarden: Eternity and the Auto Memory Doll': ['movie', '1h 30min']}
-try:
-    dummy_data.pop(None)
-except KeyError:
-    pass
-
-for i, j in dummy_data.items():
-    if None in j:
-        ex = mediaSearch(i)
-        dummy_data[i] = [ex.media_type, ex.duration]
 
 to_search = []
 for i, j in glossary_2.items():
     if j[0] > 1:
-        for k in dummy_data.keys():
+        for k in glossary_3.keys():
             if k.startswith(i):
                 for item in j[2:]:
-                    if dummy_data[k][0] == 'movie':
+                    if glossary_3[k][0] == 'movie' and f'{i}:{item}' not in glossary_3.keys():
                         to_search.append(f'{i}:{item}')
 
+if to_search:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
+        results = executor.map(mediaSearch, parser(glossary_1), repeat(True))
 
-# with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
-#     results = executor.map(mediaSearch, parser(glossary_1), repeat(True))
+        for r in results:
+            occurences = glossary_1[r.media]
+            glossary_1[r.media] = ['series', r.duration, occurences]
+        glossary_3.update(glossary_1)
 
-#     for r in results:
-#         occurences = glossary_1[r.media]
-#         glossary_1[r.media] = [occurences, r.duration]
-#     dummy_data.update(glossary_1)
+        results = executor.map(mediaSearch, to_search, repeat(True))
+        for r in results:
+            glossary_3.update({r.title: ['movie', r.duration]})
 
-#     results = executor.map(mediaSearch, to_search, repeat(True))
-#     for r in results:
-#         dummy_data.update({r.title: r.duration})
+        json_writer(glossary_3)
 
-# print(dummy_data)
+# print(glossary_3)
 
 
 # list_2 handling
@@ -176,4 +147,42 @@ for i, j in copy_dict.items():
         glossary_4.pop(i)
 
 ep_group(glossary_4, list_3)
-# print(glossary_4)
+
+
+# glossary_5 = {}
+# with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
+#         results = executor.map(mediaSearch, parser(glossary_4), repeat(True))
+
+#         for r in results:
+#             occurences = glossary_4[r.media]
+#             glossary_4[r.media] = ['series', r.duration, occurences]
+#         glossary_5.update(glossary_4)
+# print(glossary_5)
+
+
+# list_3 handling
+season_pattern = re.compile(r': ((Season|Part) \d):')
+found = []
+names = []
+
+for title in list_3:
+    matches = season_pattern.finditer(title)
+
+    for match in matches:
+
+        if match.group(2) == 'Season' or match.group(2) == 'Part':
+            name = title[0:match.span()[0]]
+            # season = match.group(1)
+            # episode = title[match.span()[-1]:].strip()
+
+            found.append(title)
+            names.append(name)
+            # print(name, season, episode, sep=' - ')
+
+# print(ep_counter(names))
+
+not_found = []
+for i in list_3:
+    if i not in found:
+        not_found.append(i)
+# print(not_found)

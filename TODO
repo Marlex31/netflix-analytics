@@ -1,6 +1,16 @@
 
-scraping unogs sometimes returns a lot of None results, reiterate over them, might depend on num of requests/workers
+rewrite imdb_scrape func by removing ret statements
 
-add tests for searching only imdb, comparting unogs and imdb duration within thresh, test for john wick 2
+imdb search allows scraping of shows that are not in the netflix db anymore
 
-refactor edge case handling in scrape func
+how many scrapes are just unogs, many seem redirected to imdb by poor code logic
+
+imdb scraping for genres
+
+add tests for searching only imdb, comparing unogs and imdb duration within thresh, test for john wick 2
+
+refactor edge case handling in scrape func for readability
+
+add support for not_found items from list_3
+
+can replace test comparing to string with result.media in some cases

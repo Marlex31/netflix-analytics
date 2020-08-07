@@ -67,5 +67,28 @@
     "Violet Evergarden: Eternity and the Auto Memory Doll": [
         "movie",
         "1h 30min"
+    ],
+    "Blue Exorcist": [
+        "series",
+        "30min",
+        25
+    ],
+    "Sword Art Online": [
+        "series",
+        "24min",
+        49
+    ],
+    "The Seven Deadly Sins": [
+        "series",
+        "24min",
+        52
+    ],
+    "John Wick: Chapter 3 - Parabellum": [
+        "movie",
+        "2h 10min"
+    ],
+    "Transformers: Revenge of the Fallen": [
+        "movie",
+        "2h 29min"
     ]
 }

@@ -53,16 +53,23 @@ def ep_counter(data, formatted=True):
     return output
 
 
-def watchTime(time_input):
-    if len(time_input) == 5:
-        pattern = "%Mmin"
+def convert_time(time_input):
+    time_input = time_input.replace('min', 'm').strip().replace(' ', '')
+    if time_input == "--":
+        return None
+    elif time_input.endswith('s'):
+        time_input = time_input[:time_input.find('m')+1]
+    if len(time_input) >= 4:
+        pattern = "%Hh%Mm"
     else:
-        pattern = "%Hh %Mmin"
+        pattern = "%Mm"
     formatted = datetime.datetime.strptime(time_input, pattern).time()
     return datetime.timedelta(hours=formatted.hour, minutes=formatted.minute)
 
 
-# show_1 = watchTime("2h 30min")
-# show_2 = watchTime("58min")
+# show_1 = convert_time("1h48m39s")
+# print(show_1)
+# print(type(show_1))
+# show_2 = convert_time("58min")
 
 # print(show_1 + show_2)

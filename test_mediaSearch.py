@@ -1,6 +1,8 @@
 
 from scrape import mediaSearch
 
+# duration is compared as a string since it is a datetime.timedelta obj
+
 
 def test_1():
     # unogs has ElCamino movie as first result
@@ -8,7 +10,8 @@ def test_1():
 
     assert result.title == 'Breaking Bad'
     assert result.media_type == 'series'
-    assert result.duration == '49min'
+    assert str(result.duration) == '0:49:00'
+    assert result.genres == ['Crime', 'Drama', 'Thriller']
 
 
 def test_2():
@@ -17,7 +20,8 @@ def test_2():
 
     assert result.title == '2001: A Space Odyssey'
     assert result.media_type == 'movie'
-    assert result.duration == '2h 29min'
+    assert str(result.duration) == '2:28:00'
+    assert result.genres == ['Adventure', 'Sci-Fi']
 
 
 def test_3():
@@ -26,7 +30,8 @@ def test_3():
 
     assert result.title == 'The Golden Compass'
     assert result.media_type == 'movie'
-    assert result.duration == '1h 53min'
+    assert str(result.duration) == '1:48:00'
+    assert result.genres == ['Adventure', 'Family', 'Fantasy']
 
 
 def test_4():
@@ -35,7 +40,8 @@ def test_4():
 
     assert result.title == 'Kakegurui'
     assert result.media_type == 'series'
-    assert result.duration == '24min'
+    assert str(result.duration) == '0:24:00'
+    assert result.genres == ['Animation', 'Drama', 'Mystery', 'Thriller']
 
 
 def test_5():
@@ -45,3 +51,4 @@ def test_5():
     assert result.title is None
     assert result.media_type is None
     assert result.duration is None
+    assert bool(result.genres) is False  # better way?
