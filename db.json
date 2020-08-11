@@ -1,94 +1,588 @@
 {
-    "2001: A Space Odyssey": [
-        "movie",
-        "2h 29min"
-    ],
-    "Captain America: The Winter Soldier": [
-        "movie",
-        "2h 16min"
-    ],
-    "EVANGELION: DEATH (TRUE)\u00b2": [
-        "movie",
-        "1h 41min"
-    ],
-    "Flavors of Youth: International Version": [
-        "movie",
-        "1h 14min"
-    ],
-    "The Golden Compass": [
-        "movie",
-        "1h 53min"
-    ],
-    "Jimmy Carr: Funny Business": [
-        "movie",
-        "1h 2min"
-    ],
-    "John Wick: Chapter Two": [
-        "movie",
-        "2h2m21s"
-    ],
-    "Journey 2: The Mysterious Island": [
-        "movie",
-        "1h 34min"
-    ],
-    "Kakegurui": [
-        "series",
-        "24min",
-        4
-    ],
-    "Pirates of the Caribbean: Dead Men Tell No Tales": [
-        "movie",
-        "2h 9min"
-    ],
-    "Sword Art Online the Movie: Ordinal Scale": [
-        "movie",
-        "1h 59min"
-    ],
-    "The Hangover: Part III": [
-        "movie",
-        "1h 40min"
-    ],
-    "The Lord of the Rings: The Fellowship of the Ring": [
-        "movie",
-        "2h 58min"
-    ],
-    "The Seven Deadly Sins the Movie: Prisoners of the Sky": [
-        "movie",
-        "1h 39min"
-    ],
-    "Transformers: Dark of the Moon": [
-        "movie",
-        "2h 34min"
-    ],
-    "Underworld: Rise of the Lycans": [
-        "movie",
-        "1h 32min"
-    ],
-    "Violet Evergarden: Eternity and the Auto Memory Doll": [
-        "movie",
-        "1h 30min"
-    ],
     "Blue Exorcist": [
         "series",
-        "30min",
+        [
+            "Animation",
+            "Action",
+            "Drama",
+            "Family",
+            "Fantasy",
+            "Horror"
+        ],
         25
     ],
     "Sword Art Online": [
         "series",
-        "24min",
+        [
+            "Animation",
+            "Action",
+            "Adventure",
+            "Comedy",
+            "Drama",
+            "Fantasy",
+            "Romance",
+            "Sci-Fi",
+            "Thriller"
+        ],
         49
     ],
     "The Seven Deadly Sins": [
         "series",
-        "24min",
+        [
+            "Animation",
+            "Action",
+            "Adventure",
+            "Comedy",
+            "Fantasy"
+        ],
         52
     ],
-    "John Wick: Chapter 3 - Parabellum": [
-        "movie",
-        "2h 10min"
+    "13 Reasons Why": [
+        "series",
+        [
+            "Drama",
+            "Mystery"
+        ],
+        7
     ],
-    "Transformers: Revenge of the Fallen": [
+    "Adventure Time": [
+        "series",
+        [
+            "Animation",
+            "Action",
+            "Adventure",
+            "Comedy",
+            "Family",
+            "Fantasy",
+            "Sci-Fi"
+        ],
+        7
+    ],
+    "Angel Beats!": [
+        "series",
+        [
+            "Animation",
+            "Action",
+            "Comedy",
+            "Drama",
+            "Fantasy"
+        ],
+        14
+    ],
+    "Big Mouth": [
+        "series",
+        [
+            "Animation",
+            "Comedy",
+            "Romance"
+        ],
+        10
+    ],
+    "Black Mirror": [
+        "series",
+        [
+            "Drama",
+            "Sci-Fi",
+            "Thriller"
+        ],
+        4
+    ],
+    "Breaking Bad": [
+        "series",
+        [
+            "Crime",
+            "Drama",
+            "Thriller"
+        ],
+        40
+    ],
+    "Castlevania": [
+        "series",
+        [
+            "Animation",
+            "Action",
+            "Adventure",
+            "Fantasy",
+            "Horror"
+        ],
+        6
+    ],
+    "Charlotte": [
+        "series",
+        [
+            "Animation",
+            "Drama",
+            "Family",
+            "Fantasy"
+        ],
+        13
+    ],
+    "DEATH NOTE": [
+        "series",
+        [
+            "Animation",
+            "Crime",
+            "Drama",
+            "Fantasy",
+            "Mystery",
+            "Thriller"
+        ],
+        34
+    ],
+    "Devilman Crybaby": [
+        "series",
+        [
+            "Animation",
+            "Action",
+            "Fantasy",
+            "Horror"
+        ],
+        5
+    ],
+    "Erased": [
+        "series",
+        [
+            "Animation",
+            "Drama",
+            "Fantasy",
+            "Mystery",
+            "Sci-Fi",
+            "Thriller"
+        ],
+        12
+    ],
+    "Fate/Zero": [
+        "series",
+        [
+            "Animation",
+            "Action",
+            "Drama",
+            "Fantasy",
+            "Thriller"
+        ],
+        25
+    ],
+    "Fullmetal Alchemist": [
+        "series",
+        [
+            "Animation",
+            "Action",
+            "Adventure",
+            "Comedy",
+            "Drama",
+            "Fantasy",
+            "Sci-Fi"
+        ],
+        101
+    ],
+    "Hi Score Girl": [
+        "series",
+        [
+            "Animation",
+            "Comedy",
+            "Romance"
+        ],
+        15
+    ],
+    "JoJo's Bizarre Adventure": [
+        "series",
+        [
+            "Animation",
+            "Action",
+            "Adventure",
+            "Drama",
+            "Fantasy",
+            "Horror",
+            "Thriller"
+        ],
+        62
+    ],
+    "Marvel's Daredevil": [
+        "series",
+        [
+            "Action",
+            "Crime",
+            "Drama",
+            "Fantasy",
+            "Sci-Fi",
+            "Thriller"
+        ],
+        3
+    ],
+    "Marvel's Iron Fist": [
+        "series",
+        [
+            "Action",
+            "Adventure",
+            "Crime",
+            "Fantasy",
+            "Sci-Fi"
+        ],
+        3
+    ],
+    "Marvel's Jessica Jones": [
+        "series",
+        [
+            "Action",
+            "Crime",
+            "Drama",
+            "Sci-Fi",
+            "Thriller"
+        ],
+        3
+    ],
+    "Money Heist": [
+        "series",
+        [
+            "Action",
+            "Crime",
+            "Mystery",
+            "Thriller"
+        ],
+        13
+    ],
+    "Neon Genesis Evangelion": [
+        "series",
+        [
+            "Animation",
+            "Action",
+            "Drama",
+            "Fantasy",
+            "Sci-Fi",
+            "Thriller"
+        ],
+        26
+    ],
+    "One-Punch Man": [
+        "series",
+        [
+            "Animation",
+            "Action",
+            "Comedy",
+            "Fantasy",
+            "Sci-Fi"
+        ],
+        12
+    ],
+    "Orange Is the New Black": [
+        "series",
+        [
+            "Comedy",
+            "Crime",
+            "Drama"
+        ],
+        3
+    ],
+    "Ray Donovan": [
+        "series",
+        [
+            "Crime",
+            "Drama"
+        ],
+        49
+    ],
+    "Rick and Morty": [
+        "series",
+        [
+            "Animation",
+            "Adventure",
+            "Comedy",
+            "Sci-Fi"
+        ],
+        39
+    ],
+    "Teasing Master Takagi-san": [
+        "series",
+        [
+            "Animation",
+            "Comedy",
+            "Romance"
+        ],
+        12
+    ],
+    "Teen Wolf": [
+        "series",
+        [
+            "Action",
+            "Drama",
+            "Fantasy",
+            "Romance",
+            "Thriller"
+        ],
+        29
+    ],
+    "The Crown": [
+        "series",
+        [
+            "Drama",
+            "History"
+        ],
+        3
+    ],
+    "The Disastrous Life of Saiki K.": [
+        "series",
+        [
+            "Animation",
+            "Comedy",
+            "Fantasy"
+        ],
+        52
+    ],
+    "The Good Place": [
+        "series",
+        [
+            "Comedy",
+            "Drama",
+            "Fantasy",
+            "Romance"
+        ],
+        29
+    ],
+    "The Sound of Your Heart": [
+        "series",
+        [
+            "Comedy"
+        ],
+        8
+    ],
+    "The Tudors": [
+        "series",
+        [
+            "Drama",
+            "History",
+            "Romance",
+            "War"
+        ],
+        4
+    ],
+    "The Witcher": [
+        "series",
+        [
+            "Action",
+            "Adventure",
+            "Fantasy",
+            "Mystery"
+        ],
+        6
+    ],
+    "Toradora!": [
+        "series",
+        [
+            "Animation",
+            "Comedy",
+            "Drama",
+            "Romance"
+        ],
+        25
+    ],
+    "Violet Evergarden": [
+        "series",
+        [
+            "Animation",
+            "Drama",
+            "Fantasy",
+            "Sci-Fi"
+        ],
+        14
+    ],
+    "Your lie in April": [
+        "series",
+        [
+            "Animation",
+            "Drama",
+            "Music",
+            "Romance"
+        ],
+        22
+    ],
+    "AJIN: Demi-Human": [
+        "series",
+        [
+            "Action",
+            "Horror",
+            "Mystery"
+        ],
+        26
+    ],
+    "Anohana: The Flower We Saw That Day": [
+        "series",
+        [
+            "Animation",
+            "Adventure",
+            "Drama",
+            "Fantasy",
+            "Mystery",
+            "Romance"
+        ],
+        11
+    ],
+    "Code Geass: Lelouch of the Rebellion": [
+        "series",
+        [
+            "Animation",
+            "Action",
+            "Drama",
+            "Mystery",
+            "Sci-Fi",
+            "Thriller",
+            "War"
+        ],
+        50
+    ],
+    "Fate/stay night: Unlimited Blade Works": [
+        "series",
+        [
+            "Animation",
+            "Action",
+            "Fantasy"
+        ],
+        25
+    ],
+    "2001: A Space Odyssey": [
         "movie",
-        "2h 29min"
+        [
+            "Adventure",
+            "Sci-Fi"
+        ]
+    ],
+    "Captain America: The Winter Soldier": [
+        "movie",
+        [
+            "Action",
+            "Adventure",
+            "Sci-Fi",
+            "Thriller"
+        ]
+    ],
+    "EVANGELION: DEATH (TRUE)\u00b2": [
+        "movie",
+        [
+            "Animation",
+            "Action",
+            "Drama",
+            "Mystery",
+            "Sci-Fi",
+            "Thriller"
+        ]
+    ],
+    "Flavors of Youth: International Version": [
+        "movie",
+        [
+            "Animation",
+            "Drama",
+            "Romance"
+        ]
+    ],
+    "The Golden Compass": [
+        "movie",
+        [
+            "Adventure",
+            "Family",
+            "Fantasy"
+        ]
+    ],
+    "Jimmy Carr: Funny Business": [
+        "movie",
+        [
+            "Comedy"
+        ]
+    ],
+    "John Wick: Chapter Two": [
+        "movie",
+        [
+            "Action",
+            "Crime",
+            "Thriller"
+        ]
+    ],
+    "Journey 2: The Mysterious Island": [
+        "movie",
+        [
+            "Action",
+            "Adventure",
+            "Comedy",
+            "Family",
+            "Fantasy",
+            "Sci-Fi"
+        ]
+    ],
+    "Kakegurui": [
+        "series",
+        [
+            "Animation",
+            "Drama",
+            "Mystery",
+            "Thriller"
+        ],
+        4
+    ],
+    "Pirates of the Caribbean: Dead Men Tell No Tales": [
+        "movie",
+        [
+            "Action",
+            "Adventure",
+            "Fantasy"
+        ]
+    ],
+    "Sword Art Online the Movie: Ordinal Scale": [
+        "movie",
+        [
+            "Animation",
+            "Action",
+            "Adventure",
+            "Fantasy",
+            "Sci-Fi"
+        ]
+    ],
+    "The Hangover: Part III": [
+        "movie",
+        [
+            "Comedy",
+            "Crime",
+            "Drama",
+            "Romance",
+            "War"
+        ]
+    ],
+    "The Lord of the Rings: The Fellowship of the Ring": [
+        "movie",
+        [
+            "Action",
+            "Adventure",
+            "Drama",
+            "Fantasy"
+        ]
+    ],
+    "The Seven Deadly Sins the Movie: Prisoners of the Sky": [
+        "movie",
+        [
+            "Animation",
+            "Action",
+            "Fantasy"
+        ]
+    ],
+    "Transformers: Dark of the Moon": [
+        "movie",
+        [
+            "Action",
+            "Adventure",
+            "Sci-Fi"
+        ]
+    ],
+    "Underworld: Rise of the Lycans": [
+        "movie",
+        [
+            "Action",
+            "Fantasy",
+            "Thriller"
+        ]
+    ],
+    "Violet Evergarden: Eternity and the Auto Memory Doll": [
+        "movie",
+        [
+            "Animation",
+            "Drama",
+            "Family"
+        ]
     ]
 }

@@ -2,7 +2,8 @@
 import re
 import concurrent.futures
 from itertools import repeat
-from pprint import pprint
+import os.path
+import json
 
 from scrape import mediaSearch
 from utillities import *
@@ -77,22 +78,27 @@ for title in list_1:
 ep_group(glossary_1, list_2)
 
 
-if __name__ == '__main__':
-    try:
-        glossary_3 = json_reader()
+global glossary_3
+glossary_3 = {}
+global to_search
+to_search = []
 
-    except FileNotFoundError:
-        glossary_3 = {}
+if __name__ == '__main__':
+
+    if os.path.exists("db.json") is True:
+        print('DB found, stopping program execution...')
+        exit()
+
+    else:
         with concurrent.futures.ProcessPoolExecutor(max_workers=2) as executor:
             results = executor.map(mediaSearch, parser(glossary_2))
 
             for r in results:
-
                 if r.media_type != 'series':
-                    glossary_3.update({r.title: [r.media_type, r.duration]})
+                    glossary_3.update({r.title: [r.media_type, r.genres]})
                 else:
                     occurences = glossary_2[r.title][0]  # possible need for exceptions
-                    glossary_3.update({r.title: [r.media_type, r.duration, occurences]})
+                    glossary_3.update({r.title: [r.media_type, r.genres, occurences]})
 
             try:
                 glossary_3.pop(None)
@@ -104,33 +110,13 @@ if __name__ == '__main__':
                     ex = mediaSearch(i)
                     glossary_3[i] = [ex.media_type, ex.duration]
 
-
-to_search = []
-for i, j in glossary_2.items():
-    if j[0] > 1:
-        for k in glossary_3.keys():
-            if k.startswith(i):
-                for item in j[2:]:
-                    if glossary_3[k][0] == 'movie' and f'{i}:{item}' not in glossary_3.keys():
-                        to_search.append(f'{i}:{item}')
-
-if to_search:
-    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
-        results = executor.map(mediaSearch, parser(glossary_1), repeat(True))
-
-        for r in results:
-            occurences = glossary_1[r.media]
-            glossary_1[r.media] = ['series', r.duration, occurences]
-        glossary_3.update(glossary_1)
-
-        results = executor.map(mediaSearch, to_search, repeat(True))
-        for r in results:
-            glossary_3.update({r.title: ['movie', r.duration]})
-
-        json_writer(glossary_3)
-
-# print(glossary_3)
-
+#             for i, j in glossary_2.items():
+#                 if j[0] > 1:
+#                     for k in glossary_3.keys():
+#                         if k.startswith(i):
+#                             for item in j[2:]:
+#                                 if glossary_3[k][0] == 'movie' and f'{i}:{item}' not in glossary_3.keys():
+#                                     to_search.append(f'{i}:{item}')
 
 # list_2 handling
 glossary_4 = {}
@@ -149,17 +135,6 @@ for i, j in copy_dict.items():
 ep_group(glossary_4, list_3)
 
 
-# glossary_5 = {}
-# with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
-#         results = executor.map(mediaSearch, parser(glossary_4), repeat(True))
-
-#         for r in results:
-#             occurences = glossary_4[r.media]
-#             glossary_4[r.media] = ['series', r.duration, occurences]
-#         glossary_5.update(glossary_4)
-# print(glossary_5)
-
-
 # list_3 handling
 season_pattern = re.compile(r': ((Season|Part) \d):')
 found = []
@@ -167,7 +142,6 @@ names = []
 
 for title in list_3:
     matches = season_pattern.finditer(title)
-
     for match in matches:
 
         if match.group(2) == 'Season' or match.group(2) == 'Part':
@@ -179,10 +153,39 @@ for title in list_3:
             names.append(name)
             # print(name, season, episode, sep=' - ')
 
-# print(ep_counter(names))
+# for i in list_3:
+#     if i not in found:
+#         to_search.append(i)
 
-not_found = []
-for i in list_3:
-    if i not in found:
-        not_found.append(i)
-# print(not_found)
+glossary_5 = {}
+for title in names:
+    if title in glossary_5.keys():
+        glossary_5[title] += 1
+    else:
+        glossary_5.update({title: 1})
+
+copy_dict = glossary_5.copy()
+for i, j in copy_dict.items():
+    if j < 3:
+        glossary_5.pop(i)
+
+if __name__ == '__main__':
+    with concurrent.futures.ProcessPoolExecutor(max_workers=2) as executor:
+        glossary_6 = {**glossary_1, **glossary_4, **glossary_5}
+        results = executor.map(mediaSearch, parser(glossary_6), repeat(True))
+
+        for r in results:
+            occurences = glossary_6[r.media]
+            glossary_6[r.media] = ['series', r.genres, occurences]
+
+# if to_search:
+#     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
+
+#         results = executor.map(mediaSearch, to_search, repeat(True))
+#         for r in results:
+#             glossary_3.update({r.title: ['movie', r.genres]})
+# print(to_search)
+
+        merged_dict = {**glossary_6, **glossary_3}
+        with open('db.json', 'w', encoding='utf8') as w:
+            json.dump(merged_dict, w, indent=4)

@@ -1,4 +1,6 @@
 
+
+
 from requests_html import HTMLSession
 from googlesearch import search
 
@@ -57,7 +59,6 @@ class mediaSearch(object):
                 self.media_type = match.text
 
             elif 'html:runtime' in match.attrs.values():
-                print(match.text)
                 self.duration = convert_time(match.text)
                 if self.counter == 0:
                     first_title = self.title
@@ -102,9 +103,9 @@ class mediaSearch(object):
             self.genres = list(map(str.strip, genre_list))
 
 
-ex = mediaSearch('Happy Tree Friends: Four on the Floor')
-print(ex.media)
-print(ex.title)
-print(ex.media_type)
-print(ex.duration)
-print(ex.genres)
+# ex = mediaSearch('John Wick: Chapter 2')
+# print(ex.media)
+# print(ex.title)
+# print(ex.media_type)
+# print(ex.duration)
+# print(ex.genres)

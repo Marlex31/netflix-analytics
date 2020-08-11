@@ -1,11 +1,8 @@
+remove seconds from scrape.duration
 
 rewrite imdb_scrape func by removing ret statements
 
-imdb search allows scraping of shows that are not in the netflix db anymore
-
 how many scrapes are just unogs, many seem redirected to imdb by poor code logic
-
-imdb scraping for genres
 
 add tests for searching only imdb, comparing unogs and imdb duration within thresh, test for john wick 2
 
@@ -13,4 +10,4 @@ refactor edge case handling in scrape func for readability
 
 add support for not_found items from list_3
 
-can replace test comparing to string with result.media in some cases
+can replace test comparing title to string with result.media in some cases

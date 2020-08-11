@@ -1,7 +1,5 @@
 import csv
 import datetime
-import json
-
 from collections import Counter
 
 
@@ -12,16 +10,6 @@ def csv_reader(file, index=0):
 
         for line in f_read:
             yield line[index]
-
-
-def json_reader():
-    with open('db.json', 'r', encoding='utf8') as f:
-        return json.load(f)
-
-
-def json_writer(data):
-    with open('db.json', 'w', encoding='utf8') as w:
-        json.dump(data, w, indent=4)
 
 
 def parser(data):
@@ -42,17 +30,6 @@ def ep_group(source_dict, target_list):
                 source_dict[i] += 1
 
 
-def ep_counter(data, formatted=True):
-    output = Counter(data)
-    copy_dict = dict(output.copy())
-
-    for x, y in copy_dict.items():
-        if y < 3:
-            output.pop(x)
-
-    return output
-
-
 def convert_time(time_input):
     time_input = time_input.replace('min', 'm').strip().replace(' ', '')
     if time_input == "--":
@@ -61,10 +38,16 @@ def convert_time(time_input):
         time_input = time_input[:time_input.find('m')+1]
     if len(time_input) >= 4:
         pattern = "%Hh%Mm"
-    else:
+    elif time_input.endswith('m'):
         pattern = "%Mm"
+    else:
+        pattern = "%Hh"
+
+    if time_input == '':
+        return None
+
     formatted = datetime.datetime.strptime(time_input, pattern).time()
-    return datetime.timedelta(hours=formatted.hour, minutes=formatted.minute)
+    return datetime.timedelta(hours=formatted.hour, minutes=formatted.minute).seconds
 
 
 # show_1 = convert_time("1h48m39s")
