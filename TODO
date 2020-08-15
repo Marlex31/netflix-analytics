@@ -1,13 +1,17 @@
+
+plotting:
+    add time conversion
+    add watching bar plot
+    find a way to plot genre preference
+
 remove seconds from scrape.duration
 
 rewrite imdb_scrape func by removing ret statements
 
-how many scrapes are just unogs, many seem redirected to imdb by poor code logic
-
-add tests for searching only imdb, comparing unogs and imdb duration within thresh, test for john wick 2
-
-refactor edge case handling in scrape func for readability
-
 add support for not_found items from list_3
 
 can replace test comparing title to string with result.media in some cases
+
+use stdout flush or sth do display scraping progress
+
+SAO movie does't get duration value

@@ -6,7 +6,7 @@ import os.path
 import json
 
 from scrape import mediaSearch
-from utillities import *
+from utillities import csv_reader, ep_group, parser
 
 
 file = 'netflix.csv'
@@ -95,10 +95,10 @@ if __name__ == '__main__':
 
             for r in results:
                 if r.media_type != 'series':
-                    glossary_3.update({r.title: [r.media_type, r.genres]})
+                    glossary_3.update({r.title: [r.media_type, r.genres, r.duration]})
                 else:
                     occurences = glossary_2[r.title][0]  # possible need for exceptions
-                    glossary_3.update({r.title: [r.media_type, r.genres, occurences]})
+                    glossary_3.update({r.title: [r.media_type, r.genres, r.duration, occurences]})
 
             try:
                 glossary_3.pop(None)
@@ -106,17 +106,17 @@ if __name__ == '__main__':
                 pass
 
             for i, j in glossary_3.items():
-                if None in j:
+                if None in j:  # is the occurences var required?
                     ex = mediaSearch(i)
-                    glossary_3[i] = [ex.media_type, ex.duration]
+                    glossary_3[i] = [ex.media_type, ex.genres, ex.duration]
 
-#             for i, j in glossary_2.items():
-#                 if j[0] > 1:
-#                     for k in glossary_3.keys():
-#                         if k.startswith(i):
-#                             for item in j[2:]:
-#                                 if glossary_3[k][0] == 'movie' and f'{i}:{item}' not in glossary_3.keys():
-#                                     to_search.append(f'{i}:{item}')
+            for i, j in glossary_2.items():
+                if j[0] > 1:
+                    for k in glossary_3.keys():
+                        if k.startswith(i):
+                            for item in j[2:]:
+                                if glossary_3[k][0] == 'movie' and f'{i}:{item}' not in glossary_3.keys():
+                                    to_search.append(f'{i}:{item}')
 
 # list_2 handling
 glossary_4 = {}
@@ -153,9 +153,9 @@ for title in list_3:
             names.append(name)
             # print(name, season, episode, sep=' - ')
 
-# for i in list_3:
-#     if i not in found:
-#         to_search.append(i)
+for i in list_3:
+    if i not in found:
+        to_search.append(i)
 
 glossary_5 = {}
 for title in names:
@@ -176,14 +176,14 @@ if __name__ == '__main__':
 
         for r in results:
             occurences = glossary_6[r.media]
-            glossary_6[r.media] = ['series', r.genres, occurences]
+            glossary_6[r.media] = ['series', r.genres, r.duration, occurences]
 
 # if to_search:
 #     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
 
 #         results = executor.map(mediaSearch, to_search, repeat(True))
 #         for r in results:
-#             glossary_3.update({r.title: ['movie', r.genres]})
+#             glossary_3.update({r.title: ['movie', r.genres, r.duration]})
 # print(to_search)
 
         merged_dict = {**glossary_6, **glossary_3}
