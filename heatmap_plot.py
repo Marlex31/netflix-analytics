@@ -7,16 +7,16 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 
+from utillities import convert_time
+
 
 with open('db.json', 'r', encoding='utf-8') as f:
     json_db = json.loads(f.read())
 
-csv_db = []
 with open('netflix.csv', 'r', encoding="utf8") as f:
     f_read = csv.reader(f)
     next(f_read)
-    for line in f_read:
-        csv_db.append(line)
+    csv_db = [line for line in f_read]
 
 titles_counter = {}
 for item in json_db.keys():
@@ -54,9 +54,16 @@ for mon in activity['2019']:
         for j in i:
             test_data.append(j)
 
+_data = list(map(convert_time, test_data))
+label_data = []
 formatted_data = []
 for x in range(0, 84, 7):
     formatted_data.append(test_data[x:x+7])
+    label_data.append(_data[x:x+7])
+
+label_data = np.array(label_data)
+label_data = np.fliplr(np.rot90(label_data, k=3))
+label_data = label_data.tolist()
 
 data = np.array(formatted_data)
 data = np.fliplr(np.rot90(data, k=3))
@@ -172,26 +179,27 @@ def annotate_heatmap(im, data=None, valfmt="{x:.2f}",
     kw.update(textkw)
 
     # Get the formatter in case a string is supplied
-    if isinstance(valfmt, str):
-        valfmt = matplotlib.ticker.StrMethodFormatter(valfmt)
+    # if isinstance(valfmt, str):
+    #     valfmt = matplotlib.ticker.StrMethodFormatter(valfmt)
 
     # Loop over the data and create a `Text` for each "pixel".
     # Change the text's color depending on the data.
     texts = []
     for i in range(data.shape[0]):
+        x=0
         for j in range(data.shape[1]):
             kw.update(color=textcolors[int(im.norm(data[i, j]) > threshold)])
-            text = im.axes.text(j, i, valfmt(data[i, j], None), **kw)
+            text = im.axes.text(j, i, f'{label_data[i][x]}h', **kw)
             texts.append(text)
-
+            x+=1
+    
     return texts
 
 
 fig, ax = plt.subplots()
-
 im, cbar = heatmap(data, day_names, month_names, ax=ax,
                    cmap="YlGn", cbarlabel="Watch activty heatmap")
-texts = annotate_heatmap(im,valfmt='{x}')
+texts = annotate_heatmap(im)
 
 fig.tight_layout()
 plt.show()

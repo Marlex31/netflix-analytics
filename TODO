@@ -1,8 +1,9 @@
 
+remove numpy arrays and add better lists 
+
 plotting:
-    add time conversion
-    add watching bar plot
-    find a way to plot genre preference
+    bar plot for genre preference
+    watch time line plot for all years
 
 remove seconds from scrape.duration
 
