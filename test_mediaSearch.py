@@ -1,7 +1,7 @@
 
 from scrape import mediaSearch
 
-# duration is compared as a string since it is a datetime.timedelta obj
+# duration is compared as a since itis a datetime.timedelta obj
 
 
 def test_1():
@@ -10,7 +10,7 @@ def test_1():
 
     assert result.title == 'Breaking Bad'
     assert result.media_type == 'series'
-    assert str(result.duration) == '2940'
+    assert result.duration == 0.82
     assert result.genres == ['Crime', 'Drama', 'Thriller']
 
 
@@ -20,7 +20,7 @@ def test_2():
 
     assert result.title == '2001: A Space Odyssey'
     assert result.media_type == 'movie'
-    assert str(result.duration) == '8880'
+    assert result.duration == 2.47
     assert result.genres == ['Adventure', 'Sci-Fi']
 
 
@@ -30,7 +30,7 @@ def test_3():
 
     assert result.title == 'The Golden Compass'
     assert result.media_type == 'movie'
-    assert str(result.duration) == '6780'
+    assert result.duration == 1.88
     assert result.genres == ['Adventure', 'Family', 'Fantasy']
 
 
@@ -40,7 +40,7 @@ def test_4():
 
     assert result.title == 'Kakegurui'
     assert result.media_type == 'series'
-    assert str(result.duration) == '1440'
+    assert result.duration == 0.4
     assert result.genres == ['Animation', 'Drama', 'Mystery', 'Thriller']
 
 
@@ -60,5 +60,5 @@ def test_6():
 
     assert result.title == 'John Wick: Chapter Two'
     assert result.media_type == 'movie'
-    assert str(result.duration) == '7320'
+    assert result.duration == 2.03
     assert result.genres == ['Action', 'Crime', 'Thriller']

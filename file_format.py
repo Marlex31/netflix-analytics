@@ -4,6 +4,7 @@ import concurrent.futures
 from itertools import repeat
 import os.path
 import json
+import time
 
 from scrape import mediaSearch
 from utillities import csv_reader, ep_group, parser
@@ -90,6 +91,7 @@ if __name__ == '__main__':
         exit()
 
     else:
+        t1 = time.time()
         with concurrent.futures.ProcessPoolExecutor(max_workers=2) as executor:
             results = executor.map(mediaSearch, parser(glossary_2))
 
@@ -117,6 +119,8 @@ if __name__ == '__main__':
                             for item in j[2:]:
                                 if glossary_3[k][0] == 'movie' and f'{i}:{item}' not in glossary_3.keys():
                                     to_search.append(f'{i}:{item}')
+            print(f'Phase 1 finished in {time.time() - t1}')
+
 
 # list_2 handling
 glossary_4 = {}
@@ -170,14 +174,16 @@ for i, j in copy_dict.items():
         glossary_5.pop(i)
 
 if __name__ == '__main__':
+    t2 = time.time()
     with concurrent.futures.ProcessPoolExecutor(max_workers=2) as executor:
         glossary_6 = {**glossary_1, **glossary_4, **glossary_5}
         results = executor.map(mediaSearch, parser(glossary_6), repeat(True))
 
         for r in results:
-            occurences = glossary_6[r.media]
-            glossary_6[r.media] = ['series', r.genres, r.duration, occurences]
+            occurences = glossary_6[r.title]
+            glossary_6[r.title] = ['series', r.genres, r.duration, occurences]
 
+        print(f'Phase 2 finished in {time.time() - t2}')
 # if to_search:
 #     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
 

@@ -1,9 +1,10 @@
 
-remove numpy arrays and add better lists 
+rewrite scraping to use trakt API
+
+remove numpy arrays and add better lists
 
 plotting:
-    bar plot for genre preference
-    watch time line plot for all years
+    bar plot/histo for genre preference
 
 remove seconds from scrape.duration
 
@@ -13,6 +14,6 @@ add support for not_found items from list_3
 
 can replace test comparing title to string with result.media in some cases
 
-use stdout flush or sth do display scraping progress
+scraping progress bar, using time module or bar with future.as_completed
 
 SAO movie does't get duration value

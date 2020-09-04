@@ -9,7 +9,7 @@
             "Fantasy",
             "Horror"
         ],
-        1800,
+        0.5,
         25
     ],
     "Sword Art Online": [
@@ -25,7 +25,7 @@
             "Sci-Fi",
             "Thriller"
         ],
-        1440,
+        0.4,
         49
     ],
     "The Seven Deadly Sins": [
@@ -37,7 +37,7 @@
             "Comedy",
             "Fantasy"
         ],
-        1440,
+        0.4,
         52
     ],
     "13 Reasons Why": [
@@ -46,7 +46,7 @@
             "Drama",
             "Mystery"
         ],
-        3600,
+        1.0,
         7
     ],
     "Adventure Time": [
@@ -61,7 +61,7 @@
             "Fantasy",
             "Sci-Fi"
         ],
-        660,
+        0.18,
         7
     ],
     "Angel Beats!": [
@@ -73,7 +73,7 @@
             "Drama",
             "Fantasy"
         ],
-        1500,
+        0.42,
         14
     ],
     "Big Mouth": [
@@ -83,7 +83,7 @@
             "Comedy",
             "Romance"
         ],
-        1800,
+        0.5,
         10
     ],
     "Black Mirror": [
@@ -93,7 +93,7 @@
             "Sci-Fi",
             "Thriller"
         ],
-        3600,
+        1.0,
         4
     ],
     "Breaking Bad": [
@@ -103,7 +103,7 @@
             "Drama",
             "Thriller"
         ],
-        2940,
+        0.82,
         40
     ],
     "Castlevania": [
@@ -115,7 +115,7 @@
             "Fantasy",
             "Horror"
         ],
-        1380,
+        0.38,
         6
     ],
     "Charlotte": [
@@ -126,7 +126,7 @@
             "Family",
             "Fantasy"
         ],
-        1440,
+        0.4,
         13
     ],
     "DEATH NOTE": [
@@ -139,7 +139,7 @@
             "Mystery",
             "Thriller"
         ],
-        1440,
+        0.4,
         34
     ],
     "Devilman Crybaby": [
@@ -150,20 +150,16 @@
             "Fantasy",
             "Horror"
         ],
-        1500,
+        0.42,
         5
     ],
     "Erased": [
         "series",
         [
-            "Animation",
-            "Drama",
-            "Fantasy",
-            "Mystery",
-            "Sci-Fi",
+            "Action",
             "Thriller"
         ],
-        1800,
+        1.67,
         12
     ],
     "Fate/Zero": [
@@ -175,7 +171,7 @@
             "Fantasy",
             "Thriller"
         ],
-        1440,
+        0.4,
         25
     ],
     "Fullmetal Alchemist": [
@@ -189,7 +185,7 @@
             "Fantasy",
             "Sci-Fi"
         ],
-        1440,
+        0.4,
         101
     ],
     "Hi Score Girl": [
@@ -199,7 +195,7 @@
             "Comedy",
             "Romance"
         ],
-        1500,
+        0.42,
         15
     ],
     "JoJo's Bizarre Adventure": [
@@ -213,7 +209,7 @@
             "Horror",
             "Thriller"
         ],
-        1800,
+        0.5,
         62
     ],
     "Marvel's Daredevil": [
@@ -226,7 +222,7 @@
             "Sci-Fi",
             "Thriller"
         ],
-        3240,
+        0.9,
         3
     ],
     "Marvel's Iron Fist": [
@@ -238,7 +234,7 @@
             "Fantasy",
             "Sci-Fi"
         ],
-        3300,
+        0.92,
         3
     ],
     "Marvel's Jessica Jones": [
@@ -250,7 +246,7 @@
             "Sci-Fi",
             "Thriller"
         ],
-        3360,
+        0.93,
         3
     ],
     "Money Heist": [
@@ -261,7 +257,7 @@
             "Mystery",
             "Thriller"
         ],
-        4200,
+        1.17,
         13
     ],
     "Neon Genesis Evangelion": [
@@ -274,7 +270,7 @@
             "Sci-Fi",
             "Thriller"
         ],
-        1440,
+        0.4,
         26
     ],
     "One-Punch Man": [
@@ -286,7 +282,7 @@
             "Fantasy",
             "Sci-Fi"
         ],
-        1440,
+        0.4,
         12
     ],
     "Orange Is the New Black": [
@@ -296,7 +292,7 @@
             "Crime",
             "Drama"
         ],
-        3540,
+        0.98,
         3
     ],
     "Ray Donovan": [
@@ -305,7 +301,7 @@
             "Crime",
             "Drama"
         ],
-        3600,
+        1.0,
         49
     ],
     "Rick and Morty": [
@@ -316,7 +312,7 @@
             "Comedy",
             "Sci-Fi"
         ],
-        1380,
+        0.38,
         39
     ],
     "Teasing Master Takagi-san": [
@@ -326,7 +322,7 @@
             "Comedy",
             "Romance"
         ],
-        1380,
+        0.38,
         12
     ],
     "Teen Wolf": [
@@ -338,7 +334,7 @@
             "Romance",
             "Thriller"
         ],
-        2460,
+        0.68,
         29
     ],
     "The Crown": [
@@ -347,7 +343,7 @@
             "Drama",
             "History"
         ],
-        3480,
+        0.97,
         3
     ],
     "The Disastrous Life of Saiki K.": [
@@ -357,7 +353,7 @@
             "Comedy",
             "Fantasy"
         ],
-        1440,
+        0.4,
         52
     ],
     "The Good Place": [
@@ -368,7 +364,7 @@
             "Fantasy",
             "Romance"
         ],
-        1320,
+        0.37,
         29
     ],
     "The Sound of Your Heart": [
@@ -376,7 +372,7 @@
         [
             "Comedy"
         ],
-        1500,
+        0.42,
         8
     ],
     "The Tudors": [
@@ -387,7 +383,7 @@
             "Romance",
             "War"
         ],
-        3600,
+        1.0,
         4
     ],
     "The Witcher": [
@@ -398,7 +394,7 @@
             "Fantasy",
             "Mystery"
         ],
-        3600,
+        1.0,
         6
     ],
     "Toradora!": [
@@ -409,7 +405,7 @@
             "Drama",
             "Romance"
         ],
-        1440,
+        0.4,
         25
     ],
     "Violet Evergarden": [
@@ -420,7 +416,7 @@
             "Fantasy",
             "Sci-Fi"
         ],
-        1440,
+        0.4,
         14
     ],
     "Your lie in April": [
@@ -431,7 +427,7 @@
             "Music",
             "Romance"
         ],
-        1380,
+        0.38,
         22
     ],
     "AJIN: Demi-Human": [
@@ -447,7 +443,7 @@
             "Sci-Fi",
             "Thriller"
         ],
-        1440,
+        0.4,
         26
     ],
     "Anohana: The Flower We Saw That Day": [
@@ -460,7 +456,7 @@
             "Mystery",
             "Romance"
         ],
-        1380,
+        0.38,
         11
     ],
     "Code Geass: Lelouch of the Rebellion": [
@@ -474,7 +470,7 @@
             "Thriller",
             "War"
         ],
-        1440,
+        0.4,
         50
     ],
     "Fate/stay night: Unlimited Blade Works": [
@@ -484,7 +480,7 @@
             "Action",
             "Fantasy"
         ],
-        1440,
+        0.4,
         25
     ],
     "2001: A Space Odyssey": [
@@ -493,7 +489,7 @@
             "Adventure",
             "Sci-Fi"
         ],
-        8880
+        2.47
     ],
     "Captain America: The Winter Soldier": [
         "movie",
@@ -503,7 +499,7 @@
             "Sci-Fi",
             "Thriller"
         ],
-        8100
+        2.25
     ],
     "EVANGELION: DEATH (TRUE)\u00b2": [
         "movie",
@@ -511,11 +507,10 @@
             "Animation",
             "Action",
             "Drama",
-            "Mystery",
             "Sci-Fi",
             "Thriller"
         ],
-        4140
+        1.15
     ],
     "Flavors of Youth: International Version": [
         "movie",
@@ -524,7 +519,7 @@
             "Drama",
             "Romance"
         ],
-        4440
+        1.23
     ],
     "The Golden Compass": [
         "movie",
@@ -533,14 +528,14 @@
             "Family",
             "Fantasy"
         ],
-        6780
+        1.88
     ],
     "Jimmy Carr: Funny Business": [
         "movie",
         [
             "Comedy"
         ],
-        3720
+        1.03
     ],
     "John Wick: Chapter Two": [
         "movie",
@@ -549,7 +544,7 @@
             "Crime",
             "Thriller"
         ],
-        7320
+        2.03
     ],
     "Journey 2: The Mysterious Island": [
         "movie",
@@ -561,7 +556,7 @@
             "Fantasy",
             "Sci-Fi"
         ],
-        5640
+        1.57
     ],
     "Kakegurui": [
         "series",
@@ -571,8 +566,7 @@
             "Mystery",
             "Thriller"
         ],
-        1440,
-        4
+        0.4
     ],
     "Pirates of the Caribbean: Dead Men Tell No Tales": [
         "movie",
@@ -581,7 +575,7 @@
             "Adventure",
             "Fantasy"
         ],
-        7740
+        2.15
     ],
     "Sword Art Online the Movie: Ordinal Scale": [
         "movie",
@@ -592,18 +586,16 @@
             "Fantasy",
             "Sci-Fi"
         ],
-        4680
+        2.0
     ],
     "The Hangover: Part III": [
         "movie",
         [
             "Comedy",
             "Crime",
-            "Drama",
-            "Romance",
-            "War"
+            "Romance"
         ],
-        6000
+        1.67
     ],
     "The Lord of the Rings: The Fellowship of the Ring": [
         "movie",
@@ -613,7 +605,7 @@
             "Drama",
             "Fantasy"
         ],
-        10680
+        2.97
     ],
     "The Seven Deadly Sins the Movie: Prisoners of the Sky": [
         "movie",
@@ -622,7 +614,7 @@
             "Action",
             "Fantasy"
         ],
-        5940
+        1.65
     ],
     "Transformers: Dark of the Moon": [
         "movie",
@@ -631,7 +623,7 @@
             "Adventure",
             "Sci-Fi"
         ],
-        9240
+        2.57
     ],
     "Underworld: Rise of the Lycans": [
         "movie",
@@ -640,7 +632,7 @@
             "Fantasy",
             "Thriller"
         ],
-        5520
+        1.53
     ],
     "Violet Evergarden: Eternity and the Auto Memory Doll": [
         "movie",
@@ -649,6 +641,6 @@
             "Drama",
             "Family"
         ],
-        5400
+        1.5
     ]
 }

@@ -31,14 +31,17 @@ def ep_group(source_dict, target_list):
 
 def convert_time(time_input):
 
-    if re.search(r'[a-zA-Z]', str(time_input)) is None:
-        return str(datetime.timedelta(seconds=int(time_input))).split(':00')[0]
-
     time_input = time_input.replace('min', 'm').strip().replace(' ', '')
-    if time_input == "--":  # or '' prob not working
+    if time_input == "--":  # or '' - prob not working
         return None
     elif time_input.endswith('s'):
         time_input = time_input[:time_input.find('m')+1]
+    if time_input == '':
+        return None
+
+    if re.search(r'[a-zA-Z]', str(time_input)) is None:
+        return str(datetime.timedelta(seconds=int(time_input))).split(':00')[0]
+
     if len(time_input) >= 4 <= 5:  # change
         pattern = "%Hh%Mm"
     elif time_input.endswith('m'):
@@ -46,16 +49,13 @@ def convert_time(time_input):
     else:
         pattern = "%Hh"
 
-    if time_input == '':
-        return None
 
     formatted = datetime.datetime.strptime(time_input, pattern).time()
-    return datetime.timedelta(hours=formatted.hour, minutes=formatted.minute).seconds
+    return round(datetime.timedelta(hours=formatted.hour, minutes=formatted.minute).seconds / 3600, 2)
 
 
-# show_1 = convert_time("10440")
+# show_1 = convert_time("3480")
 # print(show_1)
 # print(type(show_1))
 # show_2 = convert_time("58min")
-
-# print(show_1 + show_2)
+# print(show_2)

@@ -1,6 +1,4 @@
 
-
-
 from requests_html import HTMLSession
 from googlesearch import search
 
@@ -9,7 +7,7 @@ from utillities import convert_time
 
 class mediaSearch(object):
 
-    def __init__(self, media, len_scrape=False, placeholder_len='25min'):
+    def __init__(self, media, len_scrape=False, placeholder_len=0.25):
         super(mediaSearch, self).__init__()
 
         self.media = media
@@ -64,7 +62,7 @@ class mediaSearch(object):
                     first_title = self.title
                     first_media_type = self.media_type
                     first_duration = self.duration
-                if (self.title == self.media or self.title == self.simple_media):  # or self.title in self.media
+                if self.title == self.media or self.title == self.simple_media:  # or self.title in self.media
                     if (self.media_type == 'movie' and
                             len(self.media.split(':')) != len(self.title.split(':'))):
                         self.title = first_title
@@ -103,7 +101,7 @@ class mediaSearch(object):
             self.genres = list(map(str.strip, genre_list))
 
 
-# ex = mediaSearch('John Wick: Chapter 2')
+# ex = mediaSearch('Kakegurui: Episode 1')
 # print(ex.media)
 # print(ex.title)
 # print(ex.media_type)
