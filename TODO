@@ -1,12 +1,19 @@
+february compensation in heatmap plt
+
+replace weekday in heatmap plt with day attr, use np zeroes to make cal
+
+add comments
 
 rewrite scraping to use trakt API
+
+convert time vals in line plt to ints to avoid repeated casting
+
+add non netflix shows through manual input
 
 remove numpy arrays and add better lists
 
 plotting:
-    bar plot/histo for genre preference
-
-remove seconds from scrape.duration
+    add annotation to peak values in line plot showing watched media name
 
 rewrite imdb_scrape func by removing ret statements
 

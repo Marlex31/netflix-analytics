@@ -2,6 +2,7 @@ import csv
 import datetime
 import re
 
+
 def csv_reader(file, index=0):
     with open(file, 'r', encoding="utf8") as f:
         f_read = csv.reader(f)
@@ -48,7 +49,6 @@ def convert_time(time_input):
         pattern = "%Mm"
     else:
         pattern = "%Hh"
-
 
     formatted = datetime.datetime.strptime(time_input, pattern).time()
     return round(datetime.timedelta(hours=formatted.hour, minutes=formatted.minute).seconds / 3600, 2)

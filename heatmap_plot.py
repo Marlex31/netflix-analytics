@@ -42,7 +42,7 @@ for i in titles_counter.items():
         date.reverse()
         dummy_date = date.copy()
         date = dummy_date[0], dummy_date[2], dummy_date[1]  # find another way to change date format
-        week_day = datetime.date(*date).weekday()
+        week_day = datetime.date(*date).weekday() + 1
         month = datetime.date(*date).month - 1
 
         activity[year][month][month][week_day] += json_db[i[0]][2] * k
