@@ -11,4 +11,4 @@ This project seeks to provide a digestible visualization of the viewing habits, 
 ## Instructions:
 1. Download your data by going to netflix.com > Account > Profile & Parental Controls > Viewing activity
 2. Select the *Download all* button and add the csv file at the top level of the repository
-3. Tweak code for filenames
+3. Note: the scraper is broken at the moment
